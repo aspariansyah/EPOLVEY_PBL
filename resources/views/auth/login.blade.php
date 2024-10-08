@@ -25,26 +25,34 @@
             <div class="w-full max-w-md p-8">
                 <h1 class="text-3xl font-bold mb-6 text-gray-900 font-poppins tracking-wide">LOGIN</h1>
 
-                @if(session('error'))
-                    <p class="text-red-500">{{ session('error') }}</p>
+                @if($errors->any())
+                    <div class="text-red-500 mb-4">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
                 @endif
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf 
 
                     <div class="mb-4">
+                        <label for="username" class="sr-only">Username or Email</label>
                         <input
                             type="text"
-                            name="username"
-                            placeholder="Username"
+                            id="username"
+                            name="name" 
+                            placeholder="Username or Email"
                             class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            value="{{ old('username') }}"
+                            value="{{ old('name') }}"
                         />
                     </div>
 
                     <div class="mb-4">
+                        <label for="password" class="sr-only">Password</label>
                         <input
                             type="password"
+                            id="password"
                             name="password"
                             placeholder="Password"
                             class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -55,18 +63,6 @@
                         Login
                     </button>
                 </form>
-
-                <div class="flex items-center my-4">
-                    <div class="flex-grow border-t border-gray-300"></div>
-                    <span class="mx-3 text-gray-500">OR</span>
-                    <div class="flex-grow border-t border-gray-300"></div>
-                </div>
-
-                
-
-                <div class="text-center mt-4">
-                    <a href="{{ route('password.request') }}" class="text-sm text-blue-500 hover:underline">Forgot your password?</a>
-                </div>
             </div>
         </div>
     </div>

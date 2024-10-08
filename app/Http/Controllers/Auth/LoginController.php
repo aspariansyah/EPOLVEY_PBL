@@ -9,31 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -42,10 +19,70 @@ class LoginController extends Controller
 
     public function username()
     {
-        $login = request()->input('login');
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-        request()->merge([$field => $login]);
+        return 'username'; // This can remain as username or can be modified if needed
+    }
 
-        return $field;
+    public function showLoginForm()
+    {
+        if (Auth::check()) {
+            return $this->redirectToDashboard(Auth::user()->role);
+        }
+        return view('auth.login'); // Menampilkan form login jika belum login
+    }
+    
+    protected function authenticated(Request $request, $user)
+    {
+        $request->session()->regenerate();
+        return $this->redirectToDashboard($user->role)->withHeaders([
+            'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+            'Pragma' => 'no-cache',
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+        ]);
+
+        // Determine if the username is an email
+        $credentials = [
+            'password' => $request->password,
+        ];
+
+        if (filter_var($request->name, FILTER_VALIDATE_EMAIL)) {
+            $credentials['email'] = $request->name; 
+        } else {
+            $credentials['name'] = $request->name;
+        }
+
+        if (Auth::attempt($credentials)) {
+            return $this->redirectToDashboard(Auth::user()->role);
+        }
+
+        return redirect()->back()->withErrors(['login' => 'Username atau Password salah'])->withInput();
+    }
+
+    protected function redirectToDashboard($role)
+    {
+        switch ($role) {
+            case 'Admin':
+                return redirect()->route('admin.dashboard');
+            case 'Dosen':
+                return redirect()->route('dosen.dashboard');
+            case 'Mahasiswa':
+                return redirect()->route('mahasiswa.dashboard');
+            default:
+                return redirect('/');
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login'); // Redirect to the login page or wherever you want
     }
 }

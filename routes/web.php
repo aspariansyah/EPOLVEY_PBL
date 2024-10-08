@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +23,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('login', [LoginController::class, 'showLoginForm'])
+    ->middleware('guest')
+    ->name('login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])
+->name('admin.dashboard')
+->middleware('auth');
+
+Route::get('/dosen/dashboard', [DosenController::class, 'index'])
+->name('dosen.dashboard')
+->middleware('auth');
+
+Route::get('/mahasiswa/dashboard', [MahasiswaController::class, 'index'])
+->name('mahasiswa.dashboard')
+->middleware('auth');

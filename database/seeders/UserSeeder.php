@@ -15,13 +15,29 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => '3202216064',
-            'email' => 'andikajn25@gmail.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('251203'), // Hash password
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
+
+            [
+                'name' => 'Neny',
+                'email' => 'neny@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('admin123'), // Hash password untuk admin
+                'remember_token' => Str::random(10),
+                'photo' => null, // Tambahkan jika Anda memiliki foto
+                'role' => 'Admin', // Peran admin
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dosen 1',
+                'email' => 'dosen@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('dosen123'), // Hash password untuk dosen
+                'remember_token' => Str::random(10),
+                'photo' => null, // Tambahkan jika Anda memiliki foto
+                'role' => 'Dosen', // Peran dosen
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
