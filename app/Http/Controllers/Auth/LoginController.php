@@ -23,12 +23,21 @@ class LoginController extends Controller
     }
 
     public function showLoginForm()
-    {
-        if (Auth::check()) {
-            return $this->redirectToDashboard(Auth::user()->role);
-        }
-        return view('auth.login'); // Menampilkan form login jika belum login
+{
+    if (Auth::check()) {
+        return $this->redirectToDashboard(Auth::user()->role);
     }
+
+    // Menambahkan header untuk mencegah caching halaman login
+    return response()
+        ->view('auth.login')
+        ->withHeaders([
+            'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+            'Pragma' => 'no-cache',
+            'Expires' => 'Sat, 01 Jan 2000 00:00:00 GMT',
+        ]);
+}
+
     
     protected function authenticated(Request $request, $user)
     {

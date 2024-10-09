@@ -44,9 +44,15 @@
                     </li>
                 </ul>
             </nav>
-            <div class="mt-auto p-6">
-                <a href="#" class="text-gray-900 font-bold hover:underline">Log Out</a>
-            </div>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+             @csrf
+         </form>
         </div>
 
         <div class="flex-1 p-6">
