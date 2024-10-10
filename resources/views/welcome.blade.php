@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Welcome to E-Survey</title>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-hidden">
     <div class="bg-gradient-to-r from-[#910000] to-[#4b0000] min-h-screen font-poppins">
         <div class="flex justify-end items-center p-6">
             <a href="{{ route('login') }}" class="text-black bg-lime-300 px-4 py-2 rounded-full font-bold" data-aos="fade-left">
