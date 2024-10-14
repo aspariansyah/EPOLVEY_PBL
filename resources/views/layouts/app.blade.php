@@ -9,7 +9,7 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body class="bg-gray-100">
-    <div class="flex">
+    <div class="flex h-screen overflow-x-hidden"> <!-- Added overflow-x-hidden here -->
         <!-- Sidebar -->
         @if (Auth::user()->role == 'Admin')
             @include('layouts.sidebars.sidebar-admin')
@@ -22,7 +22,7 @@
         @endif
 
         <!-- Content -->
-        <div class="flex-1 p-6">
+        <div class="flex-1 p-6 overflow-x-hidden"> <!-- Added overflow-x-hidden here -->
             @yield('content')
         </div>
     </div>

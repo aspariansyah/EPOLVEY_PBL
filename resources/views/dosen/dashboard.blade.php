@@ -13,7 +13,7 @@
 <body class="bg-gray-100">
 
 
-        <div class="flex-1 p-6">
+        <div class="flex-1 p-6 mx-60 border-2 w-[160vh] h-screen">
             <h1 class="text-2xl font-bold text-gray-800">Welcome to your Dashboard!</h1>
         </div>
     </div>

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,59 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     @vite('resources/css/app.css')
+
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body class="bg-gray-100">
-    <div class="flex">
+    <div class="flex-1 p-6 mx-60 w-[160vh] h-screen">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 flex justify-center font-poppins" data-aos="fade-up">SURVEY TERBARU</h1>
 
-        <div class="w-64 h-screen bg-white shadow-md">
-            <div class="p-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-br-3xl">
-                <div class="flex items-center">
-                    <img src="{{ asset('images/mysterious.png') }}" alt="User Image" class="w-16 h-16 rounded-full border-2 border-white">
-                    <div class="ml-4">
-                        <h2 class="text-white text-xl font-semibold">{{ Auth::user()->name }}</h2>
-                        <p class="text-purple-200 text-sm">{{ Auth::user()->email }}</p>
-                    </div>
+            <!-- Dynamic Slate background box with 3 grid columns -->
+            <div class=" mt-6 p-6 grid grid-cols-3 gap-4" data-aos="fade-up">
+                <!-- Grid item for each survey -->
+                <div class="bg-white p-4 shadow-md rounded-lg h-44 text-center grid items-end" data-aos="zoom-in">
+                    <p class="text-gray-700 font-semibold">Survey 1</p>
+                    <p class="text-gray-500">Description</p>
+                    <a href="" class="text-slate-800 font-bold font-poppins bg-yellow-400 rounded-md py-1 tracking-wide hover:bg-yellow-500 hover:text-white">View</a>
                 </div>
+                <!-- You can add more survey items as needed -->
             </div>
-
-            <nav class="mt-8">
-                <ul>
-                    <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
-                            <span class="material-icons"><ion-icon name="easel-outline"></ion-icon></span>
-                            <span class="ml-4">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
-                            <span class="material-icons">notifications</span>
-                            <span class="ml-4">Recent</span>
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
-                            <span class="material-icons">person</span>
-                            <span class="ml-4">Account</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <a class="dropdown-item" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-             {{ __('Logout') }}
-         </a>
-
-         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-             @csrf
-         </form>
-        </div>
-
-        <div class="flex-1 p-6">
-            <h1 class="text-2xl font-bold text-gray-800">Welcome to your Dashboard!</h1>
         </div>
     </div>
+
+    <!-- AOS JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+    </script>
 </body>
 </html>
+@endsection

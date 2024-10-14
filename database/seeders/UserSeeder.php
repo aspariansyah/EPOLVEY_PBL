@@ -17,14 +17,25 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
 
                 
+            // [
+            //     'name' => '3202216125',
+            //     'email' => 'mhs@gmail.com',
+            //     'email_verified_at' => now(),
+            //     'password' => Hash::make('mhs123'), // Hash password untuk dosen
+            //     'remember_token' => Str::random(10),
+            //     'photo' => null, // Tambahkan jika Anda memiliki foto
+            //     'role' => 'Dosen', // Peran dosen
+            //     'created_at' => now(),
+            //     'updated_at' => now(),
+            // ],
             [
-                'name' => '3202216125',
-                'email' => 'mhs@gmail.com',
+                'name' => 'nanda',
+                'email' => 'mhss@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('mhs123'), // Hash password untuk dosen
                 'remember_token' => Str::random(10),
                 'photo' => null, // Tambahkan jika Anda memiliki foto
-                'role' => 'Dosen', // Peran dosen
+                'role' => 'Mahasiswa', // Peran dosen
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
