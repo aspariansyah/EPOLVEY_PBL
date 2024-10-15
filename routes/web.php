@@ -30,7 +30,7 @@ Route::get('login', [LoginController::class, 'showLoginForm'])
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->middleware('auth','role:Admin')->group(function () {
+Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])
         ->name('admin.dashboard');
 
@@ -44,7 +44,7 @@ Route::prefix('admin')->middleware('auth','role:Admin')->group(function () {
         ->name('admin.manage_accounts');
 });
 
-Route::prefix('dosen')->middleware('auth','role:Dosen')->group(function () {
+Route::prefix('dosen')->middleware(['auth','role:Dosen'])->group(function () {
     Route::get('/dashboard', [DosenController::class, 'index'])
         ->name('dosen.dashboard');
 
@@ -58,11 +58,11 @@ Route::prefix('dosen')->middleware('auth','role:Dosen')->group(function () {
         ->name('dosen.profil');
 });
 
-Route::prefix('mahasiswa')->middleware('auth','role:Mahasiswa')->group(function () {
+Route::prefix('mahasiswa')->middleware(['auth','role:Mahasiswa'])->group(function () {
     Route::get('/dashboard', [MahasiswaController::class, 'index'])
         ->name('mahasiswa.dashboard');
 
-    Route::get('/result', [MahasiswaController::class, 'survey'])
+    Route::get('/survey', [MahasiswaController::class, 'survey'])
         ->name('mahasiswa.survey');
 
     Route::get('/profil', [MahasiswaController::class, 'profil'])
