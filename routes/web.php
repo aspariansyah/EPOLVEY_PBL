@@ -30,14 +30,41 @@ Route::get('login', [LoginController::class, 'showLoginForm'])
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])
-->name('admin.dashboard')
-->middleware('auth');
+Route::prefix('admin')->middleware('auth','role:Admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])
+        ->name('admin.dashboard');
 
-Route::get('/dosen/dashboard', [DosenController::class, 'index'])
-->name('dosen.dashboard')
-->middleware('auth');
+    Route::get('/create-survey', [AdminController::class, 'create_survey'])
+        ->name('admin.create_survey');
 
-Route::get('/mahasiswa/dashboard', [MahasiswaController::class, 'index'])
-->name('mahasiswa.dashboard')
-->middleware('auth');
+    Route::get('/result-survey', [AdminController::class, 'result_survey'])
+        ->name('admin.result_survey');
+
+    Route::get('/manage-accounts', [AdminController::class, 'manage_accounts'])
+        ->name('admin.manage_accounts');
+});
+
+Route::prefix('dosen')->middleware('auth','role:Dosen')->group(function () {
+    Route::get('/dashboard', [DosenController::class, 'index'])
+        ->name('dosen.dashboard');
+
+    Route::get('/result', [DosenController::class, 'result'])
+        ->name('dosen.result');
+
+    Route::get('/result/detail', [DosenController::class, 'detail_result'])
+        ->name('dosen.detail_result');
+
+    Route::get('/profil', [DosenController::class, 'profil'])
+        ->name('dosen.profil');
+});
+
+Route::prefix('mahasiswa')->middleware('auth','role:Mahasiswa')->group(function () {
+    Route::get('/dashboard', [MahasiswaController::class, 'index'])
+        ->name('mahasiswa.dashboard');
+
+    Route::get('/result', [MahasiswaController::class, 'survey'])
+        ->name('mahasiswa.survey');
+
+    Route::get('/profil', [MahasiswaController::class, 'profil'])
+        ->name('mahasiswa.profil');
+});

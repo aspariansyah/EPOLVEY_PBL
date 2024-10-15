@@ -17,25 +17,19 @@
                     <li class="mb-4">
                         <a href="{{ route('mahasiswa.dashboard') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="easel-outline"></ion-icon>
-                            <span class="ml-4">Dashboard Admin</span>
+                            <span class="ml-4">Dashboard</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="mahasiswa.survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="create-outline"></ion-icon>
-                            <span class="ml-4">Create Surveys</span>
+                            <span class="ml-4">Surveys</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
-                            <ion-icon name="documents-outline"></ion-icon>
-                            <span class="ml-4">Result Survey</span>
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="mahasiswa.profil" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="person-outline"></ion-icon>
-                            <span class="ml-4">Manage Accounts</span>
+                            <span class="ml-4">Profil</span>
                         </a>
                     </li>
                     <div class="flex items-center justify-center">

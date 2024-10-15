@@ -21,19 +21,19 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="admin.create_survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="create-outline"></ion-icon>
                             <span class="ml-4">Create Surveys</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="admin.result_survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="documents-outline"></ion-icon>
                             <span class="ml-4">Result Survey</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="admin.manage_account" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="ml-4">Manage Accounts</span>
                         </a>

@@ -21,19 +21,19 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="dosen.result" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="create-outline"></ion-icon>
                             <span class="ml-4">Result</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="dosen.detail_result" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="documents-outline"></ion-icon>
                             <span class="ml-4">Detail Result</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="dosen.profil" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="ml-4">Profile</span>
                         </a>

@@ -17,8 +17,15 @@ class User extends Authenticatable
         'role', 
     ];
 
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+
     // Jika Anda ingin mengonversi kolom tertentu
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }

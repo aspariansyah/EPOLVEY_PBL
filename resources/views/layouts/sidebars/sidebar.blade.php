@@ -3,4 +3,6 @@
     @include('partials.admin-sidebar')
 @elseif (Auth::user()->hasRole('Dosen'))
     @include('partials.dosen-sidebar')
+    @elseif (Auth::user()->hasRole('Mahasiswa'))
+    @include('partials.mahasiswa-sidebar')
 @endif
