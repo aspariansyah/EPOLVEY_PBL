@@ -23,10 +23,17 @@ class AdminController extends Controller
     {
         return view('admin.manage_accounts'); 
     }
+<<<<<<< HEAD
     public function add_survey()
     {
         return view('admin.add_survey'); 
     }
     
     
+=======
+    public function analys_survey()
+    {
+        return view('admin.analys_survey'); 
+    }
+>>>>>>> 41bf775aefdbec6cab34e56ce83aade0f5169458
 }

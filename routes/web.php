@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
 
     Route::get('/manage-accounts', [AdminController::class, 'manage_accounts'])
         ->name('admin.manage_accounts');
+<<<<<<< HEAD
     
     Route::get('/add_survey', [SurveyController::class, 'create'])
         ->name('admin.add_survey');
@@ -76,6 +77,11 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
     Route::delete('/pertanyaan/{id}', [PertanyaanController::class, 'deletePertanyaan'])
         ->name('admin.delete_pertanyaan');
 
+=======
+
+    Route::get('/analys-survey', [AdminController::class, 'analys_survey'])
+        ->name('admin.analys_survey');
+>>>>>>> 41bf775aefdbec6cab34e56ce83aade0f5169458
 });
 
 
