@@ -27,15 +27,15 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="admin.manage_account" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.manage_accounts') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="ml-4">Manage Accounts</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="admin.result_survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.analys_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="documents-outline"></ion-icon>
-                            <span class="ml-4">Recent</span>
+                            <span class="ml-4">Analys Survey</span>
                         </a>
                     </li>
                     <li class="mb-4">

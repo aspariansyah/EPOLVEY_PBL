@@ -42,6 +42,9 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
 
     Route::get('/manage-accounts', [AdminController::class, 'manage_accounts'])
         ->name('admin.manage_accounts');
+
+    Route::get('/analys-survey', [AdminController::class, 'analys_survey'])
+        ->name('admin.analys_survey');
 });
 
 Route::prefix('dosen')->middleware(['auth','role:Dosen'])->group(function () {

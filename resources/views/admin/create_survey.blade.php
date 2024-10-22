@@ -39,11 +39,20 @@
                                         <button class="py-1 px-3 bg-blue-500 text-white rounded">Individual</button>
                                     </td>
                                     <td class="border border-gray-300 p-2">
-                                        <button class="py-1 px-3 bg-green-500 text-white rounded"><ion-icon name="create-outline"></ion-icon>Edit</button>
-                                        <button class="py-1 px-3 bg-red-500 text-white rounded"><ion-icon name="close-outline" class="relative -bottom-[3px]"></ion-icon>Delete</button>
+                                        <button class="py-1 px-3 bg-green-500 hover:bg-green-700 text-white rounded"><ion-icon name="create-outline"></ion-icon>Edit</button>
+                                        <button class="py-1 px-3 bg-red-500 hover:bg-red-700 text-white rounded"><ion-icon name="close-outline" class="relative -bottom-[3px]"></ion-icon>Delete</button>
                                     </td>
-                                    <td class="border border-gray-300 p-2">
-                                        <button class="py-1 px-3 bg-gray-200 rounded">Excel</button>
+                                    <td class="border border-gray-300 p-2 flex gap-4 text-white">
+                                        <button class="py-1 px-3 bg-green-700 hover:bg-green-900 rounded flex"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48">
+                                            <rect width="16" height="9" x="28" y="15" fill="#21a366"></rect>
+                                            <path fill="#185c37" d="M44,24H12v16c0,1.105,0.895,2,2,2h28c1.105,0,2-0.895,2-2V24z"></path>
+                                            <rect width="16" height="9" x="28" y="24" fill="#107c42"></rect>
+                                            <rect width="16" height="9" x="12" y="15" fill="#3fa071"></rect>
+                                            <path fill="#33c481" d="M42,6H28v9h16V8C44,6.895,43.105,6,42,6z"></path>
+                                            <path fill="#21a366" d="M14,6h14v9H12V8C12,6.895,12.895,6,14,6z"></path>
+                                        </svg>
+                                        
+                                        Excel</button>
                                         <button class="py-1 px-3 bg-gray-200 rounded">Email</button>
                                     </td>
                                 </tr>
