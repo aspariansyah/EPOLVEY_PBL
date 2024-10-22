@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +12,8 @@ class AdminController extends Controller
     }
     public function create_survey()
     {
-        return view('admin.create_survey'); 
+        $surveys = Survey::all();
+        return view('admin.create_survey', compact('surveys')); 
     }
     public function result_survey()
     {
@@ -21,4 +23,10 @@ class AdminController extends Controller
     {
         return view('admin.manage_accounts'); 
     }
+    public function add_survey()
+    {
+        return view('admin.add_survey'); 
+    }
+    
+    
 }
