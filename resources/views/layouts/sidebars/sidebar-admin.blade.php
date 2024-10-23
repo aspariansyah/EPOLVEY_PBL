@@ -15,39 +15,39 @@
             <nav class="mt-8">
                 <ul>
                     <li class="mb-4">
-                        <a href="{{ route('admin.dashboard') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.dashboard') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
                             <ion-icon name="easel-outline"></ion-icon>
                             <span class="ml-4">Dashboard</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="{{ route('admin.create_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.create_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.create_survey') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
                             <ion-icon name="create-outline"></ion-icon>
-                            <span class="ml-4">Manage Survey</span>
+                            <span class="ml-4">Create Survey</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="{{ route('admin.manage_accounts') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.manage_accounts') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.manage_accounts') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="ml-4">Manage Accounts</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="{{ route('admin.analys_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.analys_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.analys_survey') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
                             <ion-icon name="documents-outline"></ion-icon>
-                            <span class="ml-4">Analys Survey</span>
+                            <span class="ml-4">Analyze Survey</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="admin.result_survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('admin.result_survey') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.result_survey') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
                             <ion-icon name="documents-outline"></ion-icon>
-                            <span class="ml-4">Account</span>
+                            <span class="ml-4">Survey Results</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="admin.result_survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
-                            <ion-icon name="documents-outline"></ion-icon>
-                            <span class="ml-4">Setting</span>
+                        <a href="" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100 {{ request()->routeIs('admin.settings') ? 'bg-blue-100 font-bold text-blue-600' : '' }}">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <span class="ml-4">Settings</span>
                         </a>
                     </li>
                     <div class="flex items-center justify-center">
@@ -74,7 +74,6 @@
     </div>
 </div>
 
-<!-- JavaScript to toggle sidebar and hamburger position -->
 <script>
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');

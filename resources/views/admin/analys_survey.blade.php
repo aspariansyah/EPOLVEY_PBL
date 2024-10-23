@@ -6,7 +6,7 @@
 <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-<div class="flex flex-col h-screen border-2">
+<div class="flex flex-col h-screen">
 
   <div class="antialiased sans-serif min-h-screen ">
     <div class="min-h-screen p-6 md:ml-64 block">

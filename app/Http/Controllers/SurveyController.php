@@ -32,7 +32,7 @@ class SurveyController extends Controller
             'status' => $request->status,
         ]);
     
-        return redirect()->route('admin.dashboard')->with('success', 'Survey berhasil ditambahkan');
+        return redirect()->route('admin.create_survey')->with('success', 'Survey berhasil ditambahkan');
     }
 
     public function edit(Survey $survey)
