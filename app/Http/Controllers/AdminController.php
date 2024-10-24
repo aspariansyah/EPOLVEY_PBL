@@ -38,8 +38,8 @@ class AdminController extends Controller
     {
         return view('admin.profil'); 
     }
-    public function setting()
+    public function jadwal()
     {
-        return view('admin.seting'); 
+        return view('admin.jadwal'); 
     }
 }

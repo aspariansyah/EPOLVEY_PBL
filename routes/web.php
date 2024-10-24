@@ -82,8 +82,8 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
     Route::get('/result_survey', [AdminController::class, 'result_survey'])
         ->name('admin.result_survey');
 
-    Route::get('/setting', [AdminController::class, 'setting'])
-        ->name('admin.settinh');
+    Route::get('/jadwal', [AdminController::class, 'jadwal'])
+        ->name('admin.jadwal');
 
     Route::get('/profil', [AdminController::class, 'profil'])
         ->name('admin.profil');
