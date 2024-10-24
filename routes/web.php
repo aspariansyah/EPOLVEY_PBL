@@ -79,6 +79,14 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
     Route::delete('/pertanyaan/{id}', [PertanyaanController::class, 'deletePertanyaan'])
         ->name('admin.delete_pertanyaan');
 
+    Route::get('/result_survey', [AdminController::class, 'result_survey'])
+        ->name('admin.result_survey');
+
+    Route::get('/setting', [AdminController::class, 'setting'])
+        ->name('admin.settinh');
+
+    Route::get('/profil', [AdminController::class, 'profil'])
+        ->name('admin.profil');
 });
 
 

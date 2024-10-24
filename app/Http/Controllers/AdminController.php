@@ -30,6 +30,16 @@ class AdminController extends Controller
     {
         return view('admin.add_survey'); 
     }
-    
-    
+    public function result_survey()
+    {
+        return view('admin.result_survey'); 
+    }
+    public function profil()
+    {
+        return view('admin.profil'); 
+    }
+    public function setting()
+    {
+        return view('admin.seting'); 
+    }
 }
