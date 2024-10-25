@@ -1,78 +1,61 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Welcome to E-Survey</title>
+    <style>
+        @keyframes colorChange {
+            0% { background-color: rgb(145, 0, 0); }
+            25% { background-color: rgb(75, 0, 0); }
+            50% { background-color: rgb(0, 145, 0); }
+            75% { background-color: rgb(0, 0, 145); }
+            100% { background-color: rgb(145, 0, 0); }
+        }
 
-@section('content')
+        .bg-animate {
+            animation: colorChange 10s infinite; /* 10 seconds duration, infinite loop */
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+    <div class="bg-gradient-to-r bg-animate min-h-screen font-poppins">
+        <div class="flex justify-end items-center p-6">
+            <a href="{{ route('login') }}" class="text-black bg-lime-300 px-4 py-2 rounded-full font-bold" data-aos="fade-left">
+                Log In
+            </a>
+        </div>
 
-<div class="antialiased sans-serif min-h-screen">
-    <div class="min-h-screen p-6 md:ml-64 block">
+        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center h-full top-10">
+            <div class="text-center md:text-left text-white p-6" data-aos="fade-right">
+                <h1 class="text-6xl font-bold drop-shadow-xl" >E-Survey</h1>
+                <h2 class="text-4xl mt-2 font-bold drop-shadow-xl">ELECTRICAL ENGINEERING</h2>
+                <p class="mt-4 text-lg mb-10">
+                    We believe that every input has significance.<br />
+                    With this E-Survey, you can make a direct contribution <br />in providing your opinion.
+                </p>
+                <a href="{{ route('login') }}" class="bg-lime-300 text-black mt-10 px-8 py-4 rounded-md text-xl font-bold drop-shadow-xl">
+                    Start Your Survey !
+                </a>
+            </div>
 
-        <!-- Data Boxes Section -->
-        <div class="min-h-screen bg-gray-100 flex items-start justify-center p-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl">
-
-                <!-- Box 1 -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Total Sales</h3>
-                    <p class="text-3xl font-bold text-blue-600">75%</p>
-                    <div class="mt-2 text-sm text-gray-500">Compared to last month</div>
-                </div>
-
-                <!-- Box 2 -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Customer Satisfaction</h3>
-                    <p class="text-3xl font-bold text-green-500">89%</p>
-                    <div class="mt-2 text-sm text-gray-500">Positive feedback rate</div>
-                </div>
-
-                <!-- Box 3 -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Revenue Growth</h3>
-                    <p class="text-3xl font-bold text-yellow-500">22%</p>
-                    <div class="mt-2 text-sm text-gray-500">Increase from last quarter</div>
-                </div>
-
-                <!-- Box 4 -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Active Users</h3>
-                    <p class="text-3xl font-bold text-red-500">1,200</p>
-                    <div class="mt-2 text-sm text-gray-500">Users online today</div>
-                </div>
+            <div class="mt-8 md:mt-0 md:ml-16" data-aos="fade-up">
+                <img src="{{ asset('images/homepage.png') }}" alt="Survey Illustration" class="h-auto w-[500px] drop-shadow-2xl" />
             </div>
         </div>
 
-        <!-- Survey Table Section (Reduced Spacing) -->
-        <div class="lg:-mt-[400px] bg-white p-6 rounded-lg shadow-lg w-full">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Survey Status</h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-300">
-                    <thead>
-                        <tr>
-                            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-medium text-gray-600">No</th>
-                            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-medium text-gray-600">Nama Survey</th>
-                            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-medium text-gray-600">Tanggal Rilis</th>
-                            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-medium text-gray-600">Status</th>
-                            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-medium text-gray-600"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($surveys as $survey)
-                        <!-- Row 1 -->
-                        <tr>
-                            <td class="p-5 border-y">{{ $loop->iteration }}</td>
-                            <td class="border-y">{{ $survey->nama }}</td>
-                            <td class="border-y">{{ $survey->updated_at->format('d M Y') }}</td>
-                            <td class="py-2 px-4 border-b">
-                                <span class="text-green-600 font-semibold">Active</span>
-                            </td>
-                            <td class="py-2 px-4 border-b">
-                                <button class="text-white hover:bg-blue-800 bg-blue-600 px-6 py-1 rounded">View</button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div class="relative lg:absolute bottom-4 left-4 text-white">
+            <a href="#" class="text-sm">About Me</a>
         </div>
     </div>
-</div>
-
-@endsection
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200, // Durasi animasi dalam milidetik
+            once: true, //sekali jalan
+        });
+    </script>
+</body>
+</html>
