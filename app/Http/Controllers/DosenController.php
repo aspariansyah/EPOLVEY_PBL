@@ -17,7 +17,7 @@ class DosenController extends Controller
     {
         return view('dosen.detail_result');
     }
-    public function prodil()
+    public function profil()
     {
         return view('dosen.profil');
     }
