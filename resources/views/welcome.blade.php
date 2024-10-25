@@ -6,9 +6,22 @@
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Welcome to E-Survey</title>
+    <style>
+        @keyframes colorChange {
+            0% { background-color: rgb(145, 0, 0); }
+            25% { background-color: rgb(75, 0, 0); }
+            50% { background-color: rgb(0, 145, 0); }
+            75% { background-color: rgb(0, 0, 145); }
+            100% { background-color: rgb(145, 0, 0); }
+        }
+
+        .bg-animate {
+            animation: colorChange 10s infinite; /* 10 seconds duration, infinite loop */
+        }
+    </style>
 </head>
 <body class="overflow-hidden">
-    <div class="bg-gradient-to-r from-[#910000] to-[#4b0000] min-h-screen font-poppins">
+    <div class="bg-gradient-to-r bg-animate min-h-screen font-poppins">
         <div class="flex justify-end items-center p-6">
             <a href="{{ route('login') }}" class="text-black bg-lime-300 px-4 py-2 rounded-full font-bold" data-aos="fade-left">
                 Log In
