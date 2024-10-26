@@ -12,7 +12,7 @@ class CreateAnswersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('jawaban');
+            $table->text('jawaban')->nullable();
             $table->unsignedTinyInteger('skor')->nullable();
             $table->timestamps();
 

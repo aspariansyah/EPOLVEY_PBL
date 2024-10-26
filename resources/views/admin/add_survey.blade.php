@@ -20,6 +20,23 @@
                 </p>
             </div>
             
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <!-- Display error message -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                        
             <!-- Form for creating new survey -->
             <form action="{{ route('admin.store_survey') }}" method="POST" class="mt-8 space-y-6">
                 @csrf
@@ -33,7 +50,7 @@
                         <label for="jenis" class="block text-sm font-medium text-gray-700">Jenis Survey</label>
                         <select id="jenis" name="jenis" required class="block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
                             <option value="IKAD">IKAD</option>
-                            <option value="Survey Kepuasan">Survey Kepuasan</option>
+                            <option value="Survey kepuasan">Survey Kepuasan</option>
                             <option value="Jenis Baru">Jenis Baru</option>
                         </select>
                     </div>
@@ -73,6 +90,7 @@
             </form>
         </div>
     </div>
+    
 </div>
 </div>
 </body>

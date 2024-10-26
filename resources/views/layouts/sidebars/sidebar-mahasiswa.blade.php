@@ -21,13 +21,13 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="mahasiswa.survey" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href={{ route('mahasiswa.survey') }} class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="create-outline"></ion-icon>
                             <span class="ml-4">Surveys</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="mahasiswa.profil" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('mahasiswa.profil', auth()->user()->id) }}"class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
                             <ion-icon name="person-outline"></ion-icon>
                             <span class="ml-4">Profil</span>
                         </a>

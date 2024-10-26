@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MahasiswaSurveyController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Auth;
@@ -127,7 +128,24 @@ Route::prefix('mahasiswa')->middleware(['auth','role:Mahasiswa'])->group(functio
 
     Route::get('/survey', [MahasiswaController::class, 'survey'])
         ->name('mahasiswa.survey');
+    Route::get('/survey/{id}', [MahasiswaSurveyController::class, 'show'])
+        ->name('mahasiswa.survey_detail');
+    Route::get('/survey/{surveyId}/question/{questionIndex}', [MahasiswaSurveyController::class, 'showQuestion'])
+        ->name('mahasiswa.survey.answer');
+    Route::post('/survey/{id}/submit', [MahasiswaSurveyController::class, 'submitSurvey'])
+        ->name('mahasiswa.survey.submit');
 
-    Route::get('/profil', [MahasiswaController::class, 'profil'])
+    // Route untuk melihat semua jawaban survei
+    Route::get('/surveys/{surveyId}/answer/{questionIndex}', [MahasiswaSurveyController::class, 'answer'])
+    ->name('mahasiswa.survey.start');
+
+
+    //profil
+    Route::get('/profil/{id}', [MahasiswaController::class, 'profil'])
         ->name('mahasiswa.profil');
+    Route::get('/profil/{id}/edit', [MahasiswaController::class, 'edit'])
+        ->name('mahasiswa.profil_edit');
+    Route::put('/profil/{id}', [MahasiswaController::class, 'update'])
+        ->name('mahasiswa.update_profil');
+        
 });
