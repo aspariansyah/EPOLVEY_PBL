@@ -71,6 +71,7 @@ class MahasiswaController extends Controller
         $profil->semester = $request->semester;
         if ($request->filled('email')) {
             $user->email = $request->email; // Update email pengguna
+            $user->email_verified_at = now();
         }
 
         $profil->save();
