@@ -16,9 +16,9 @@ return new class extends Migration
         $table->enum('semester', ['1', '2', '3', '4', '5', '6']);
         $table->string('kelas', 50);
         $table->string('mata_kuliah', 100);
-        $table->string('id_dosen'); // Menggunakan name dari user sebagai foreign key
+        $table->unsignedBigInteger('id_dosen')->unique(); // Menggunakan name dari user sebagai foreign key
         $table->string('dosen_pengampu', 100);
-        $table->foreign('id_dosen')->references('name')->on('users')->onDelete('cascade');
+        $table->foreign('id_dosen')->references('id')->on('users')->onDelete('cascade');
         $table->timestamps();
     });
 }

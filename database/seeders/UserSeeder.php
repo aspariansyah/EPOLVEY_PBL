@@ -34,8 +34,37 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('mhs123'), // Hash password untuk dosen
                 'remember_token' => Str::random(10),
-                'photo' => null, // Tambahkan jika Anda memiliki foto
                 'role' => 'Mahasiswa', // Peran dosen
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '3202216064',
+                'email' => 'andikajn25@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('251203'), // Hash password untuk dosen
+                'remember_token' => Str::random(10),
+                'role' => 'Mahasiswa', // Peran dosen
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '601251453',
+                'email' => 'neny@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('12345'), // Hash password untuk dosen
+                'remember_token' => Str::random(10),
+                'role' => 'Admin', // Peran dosen
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => '6102342213',
+                'email' => 'dosen@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('12345'), // Hash password untuk dosen
+                'remember_token' => Str::random(10),
+                'role' => 'Dosen', // Peran dosen
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

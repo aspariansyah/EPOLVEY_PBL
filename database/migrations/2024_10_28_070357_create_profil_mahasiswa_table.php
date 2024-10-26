@@ -10,15 +10,18 @@ class CreateProfilMahasiswaTable extends Migration
     {
         Schema::create('profil_mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->string('email')->unique();
-            $table->string('jurusan');
-            $table->string('prodi');
+            $table->unsignedBigInteger('id_user')->unique();
+            $table->string('name')->unique(); // mengganti user_id dengan username
+            $table->string('email')->unique()->nullable();
+            $table->string('jurusan')->nullable();
+            $table->string('prodi')->nullable();
             $table->enum('semester', ['1', '2', '3', '4', '5', '6']);
             $table->string('foto')->nullable();
             $table->timestamps();
-            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+
+
         });
     }
 
@@ -27,4 +30,3 @@ class CreateProfilMahasiswaTable extends Migration
         Schema::dropIfExists('profil_mahasiswa');
     }
 }
-

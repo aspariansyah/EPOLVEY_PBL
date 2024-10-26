@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,7 +25,8 @@ class AdminController extends Controller
     }
     public function manage_accounts()
     {
-        return view('admin.manage_accounts'); 
+        $profils = User::all();
+        return view('admin.manage_accounts', compact('profils')); 
     }
     public function add_survey()
     {

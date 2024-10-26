@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DosenController;
@@ -70,7 +71,7 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
     Route::post('/surveys/{survey}/pertanyaan', [PertanyaanController::class, 'store'])
         ->name('admin.store_pertanyaan');
 
-        Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class, 'editPertanyaan'])
+    Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class, 'editPertanyaan'])
         ->name('admin.edit_pertanyaan');
 
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'updatePertanyaan'])
@@ -87,6 +88,22 @@ Route::prefix('admin')->middleware(['auth','role:Admin'])->group(function () {
 
     Route::get('/profil', [AdminController::class, 'profil'])
         ->name('admin.profil');
+
+        Route::get('/accounts/create', [AccountController::class, 'create'])
+        ->name('admin.account_create');
+
+    Route::post('/accounts/store', [AccountController::class, 'store'])
+        ->name('admin.account_store');
+
+    Route::get('/accounts/{id}/edit', [AccountController::class, 'edit'])
+        ->name('admin.account_edit');
+
+    Route::put('/accounts/{id}', [AccountController::class, 'update'])
+        ->name('admin.account_update');
+
+    Route::delete('/accounts/{id}', [AccountController::class, 'destroy'])
+        ->name('admin.account_delete');    
+
 });
 
 

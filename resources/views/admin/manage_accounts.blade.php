@@ -15,7 +15,7 @@
                     type="text" 
                     id="searchInput" 
                     class="px-4 py-2 rounded-lg border border-gray-300" 
-                    placeholder="Cari Nama atau NIM..." 
+                    placeholder="Cari Nama atau Email..." 
                     onkeyup="filterTable()" />
             
                 <div class="flex items-center space-x-2">
@@ -27,29 +27,37 @@
                         <option value="za">Z-A (Nama Mahasiswa)</option>
                     </select>
                 </div>
+                <a href="{{ route('admin.account_create') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add Account</a>
             </div>
 
             <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
                 <table id="studentTable" class="min-w-full bg-white border border-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Mahasiswa</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIM</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Password</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Perubahan</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b">
-                            <td class="p-5">1</td>
-                            <td class="p-5">Cameron Williamson</td>
-                            <td class="p-5">3202216125</td>
-                            <td class="p-5">nanda.nadlirin@gmail.com</td>
-                            <td class="p-5">admin123</td>
-                            <td class="p-5">12-10-2024</td>
+                        @foreach ($profils as $profil)
+                        <tr>
+                            <td class="px-4 py-4 border-b border-gray-200">{{ $profil->id }}</td>
+                            <td class="px-4 py-4 border-b border-gray-200">{{ $profil->name }}</td>
+                            <td class="px-4 py-4 border-b border-gray-200">{{ $profil->email }}</td>
+                            <td class="px-4 py-4 border-b border-gray-200">{{ $profil->role }}</td>
+                            <td class="px-4 py-4 border-b border-gray-200">
+                                <a href="{{ route('admin.account_edit', $profil->id) }}" class="text-blue-600 hover:underline">Edit</a>
+                                <form action="{{ route('admin.account_delete', $profil->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete()">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                </form>
+                            </td>   
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -58,9 +66,14 @@
 </div>
 
 <script>
-    // fungsi untuk searching datanya
+    // Fungsi konfirmasi sebelum menghapus akun
+    function confirmDelete() {
+        return confirm('Apakah Anda yakin ingin menghapus akun ini? Tindakan ini tidak dapat dibatalkan.');
+    }
+
+    // Fungsi pencarian
     function filterTable() {
-        var input, filter, table, tr, td, i, txtValue;
+        var input, filter, table, tr, tdName, tdEmail, i, txtValueName, txtValueEmail;
         input = document.getElementById("searchInput");
         filter = input.value.toLowerCase();
         table = document.getElementById("studentTable");
@@ -68,21 +81,21 @@
 
         for (i = 1; i < tr.length; i++) {
             tr[i].style.display = "none";
-            tdName = tr[i].getElementsByTagName("td")[1]; // Nama Mahasiswa
-            tdNIM = tr[i].getElementsByTagName("td")[2];  // NIM
+            tdName = tr[i].getElementsByTagName("td")[1]; // Kolom Nama
+            tdEmail = tr[i].getElementsByTagName("td")[2]; // Kolom Email
 
-            if (tdName || tdNIM) {
+            if (tdName || tdEmail) {
                 txtValueName = tdName.textContent || tdName.innerText;
-                txtValueNIM = tdNIM.textContent || tdNIM.innerText;
+                txtValueEmail = tdEmail.textContent || tdEmail.innerText;
 
-                if (txtValueName.toLowerCase().indexOf(filter) > -1 || txtValueNIM.toLowerCase().indexOf(filter) > -1) {
+                if (txtValueName.toLowerCase().indexOf(filter) > -1 || txtValueEmail.toLowerCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 }
             }
         }
     }
 
-    // ini untok sorting
+    // Fungsi sorting
     function applySort() {
         var table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("studentTable");
@@ -96,33 +109,27 @@
             for (i = 1; i < (rows.length - 1); i++) {
                 shouldSwitch = false;
 
-                x = rows[i].getElementsByTagName("TD")[5]; // berdasarkan tanggal
-                y = rows[i + 1].getElementsByTagName("TD")[5];
-
-                // fungsi sorting dari yang lamak sampai terbaru
-                if (sortType === "last_update") {
-                    if (new Date(x.innerHTML) < new Date(y.innerHTML)) {
+                // Sorting by update date
+                if (sortType === "last_update" || sortType === "oldest_update") {
+                    x = rows[i].getElementsByTagName("TD")[4];
+                    y = rows[i + 1].getElementsByTagName("TD")[4];
+                    if (sortType === "last_update" && new Date(x.innerHTML) < new Date(y.innerHTML)) {
                         shouldSwitch = true;
                         break;
-                    }
-                } else if (sortType === "oldest_update") {
-                    if (new Date(x.innerHTML) > new Date(y.innerHTML)) {
+                    } else if (sortType === "oldest_update" && new Date(x.innerHTML) > new Date(y.innerHTML)) {
                         shouldSwitch = true;
                         break;
                     }
                 }
 
-                // Sorting by A-Z or Z-A (Nama Mahasiswa)
-                x = rows[i].getElementsByTagName("TD")[1];
-                y = rows[i + 1].getElementsByTagName("TD")[1];
-
-                if (sortType === "az") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                // Sorting A-Z or Z-A by name
+                if (sortType === "az" || sortType === "za") {
+                    x = rows[i].getElementsByTagName("TD")[1];
+                    y = rows[i + 1].getElementsByTagName("TD")[1];
+                    if (sortType === "az" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
-                    }
-                } else if (sortType === "za") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    } else if (sortType === "za" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }
