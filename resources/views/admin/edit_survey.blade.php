@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    <div class="antialiased sans-serif min-h-screen">
+        <div class="min-h-screen p-4 md:p-6 md:ml-64 block">
     <h1 class="text-2xl font-bold mb-4">Edit Survei</h1>
 
     <form action="{{ route('admin.update_survey', $survey->id) }}" method="POST">

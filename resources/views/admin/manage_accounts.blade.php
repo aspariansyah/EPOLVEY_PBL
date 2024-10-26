@@ -9,25 +9,31 @@
                 <h1 class="text-2xl font-semibold text-gray-800">Akun Mahasiswa</h1>
             </div>
 
-            <!-- Search Bar -->
-            <div class="mb-4 flex justify-between items-center">
+            <!-- Search Bar and Buttons -->
+            <div class="mb-4 flex justify-between items-center space-x-4">
                 <input 
                     type="text" 
                     id="searchInput" 
                     class="px-4 py-2 rounded-lg border border-gray-300" 
                     placeholder="Cari Nama atau Email..." 
                     onkeyup="filterTable()" />
-            
+                
                 <div class="flex items-center space-x-2">
-                    <select id="sortOptions" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600" onchange="applySort()">
-                        <option value="">Sort By</option>
-                        <option value="last_update">Last Update</option>
-                        <option value="oldest_update">Oldest Update</option>
-                        <option value="az">A-Z (Nama Mahasiswa)</option>
-                        <option value="za">Z-A (Nama Mahasiswa)</option>
-                    </select>
+                    <a href="{{ route('admin.account_create') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add Account</a>
+                    <!-- Import from Excel Button -->
+                    <button type="button" onclick="document.getElementById('excelFileInput').click()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                        Import from Excel
+                    </button>
+                    <input type="file" id="excelFileInput" accept=".xlsx, .xls" style="display: none;" onchange="uploadExcelFile()">
                 </div>
-                <a href="{{ route('admin.account_create') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add Account</a>
+
+                <select id="sortOptions" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600" onchange="applySort()">
+                    <option value="">Sort By</option>
+                    <option value="last_update">Last Update</option>
+                    <option value="oldest_update">Oldest Update</option>
+                    <option value="az">A-Z (Nama Mahasiswa)</option>
+                    <option value="za">Z-A (Nama Mahasiswa)</option>
+                </select>
             </div>
 
             <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
@@ -53,7 +59,7 @@
                                 <form action="{{ route('admin.account_delete', $profil->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                    <button type="submit" class="text-red-600 hover:underline px-2">Delete</button>
                                 </form>
                             </td>   
                         </tr>
