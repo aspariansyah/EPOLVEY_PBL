@@ -38,7 +38,7 @@
                 @if($mahasiswa->foto)
                     <div class="relative inline-block">
                         <div class="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-full blur-xl opacity-20"></div>
-                        <img src="{{ asset('storage/' . $mahasiswa->foto) }}" 
+                        <img src="{{ asset('storage/images/foto_profil/' . $mahasiswa->foto) }}" 
                              alt="Foto Profil" 
                              class="relative rounded-full w-32 h-32 object-cover border-4 border-white shadow-md">
                     </div>
